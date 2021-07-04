@@ -7,7 +7,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 
 let httpLink = createHttpLink({
-  uri: "http://localhost:4000/graphql",
+  uri: "https://covid-trackerbackend.herokuapp.com/graphql",
 });
 const authLink = setContext((_, { headers }) => {
   let token = localStorage.getItem("token");

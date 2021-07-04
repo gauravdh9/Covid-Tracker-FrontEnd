@@ -8,7 +8,7 @@ const initialValue = { start: "2021/01/01", end: "2021/02/26" };
 
 const Card = ({ heading, data }) => {
   return (
-    <div className="w-3/12 shadow-xl border-2 rounded-lg h-20 p-4">
+    <div className="lg:w-3/12 w-5/6 shadow-xl border-2 rounded-lg h-20 p-4 m-4 lg:m-0">
       <span className="text-xl font-bold">{heading}</span>
       <span className="px-2">{data}</span>
     </div>
@@ -19,8 +19,7 @@ const Container = () => {
   const params = useParams();
   const [date, setDate] = useState(initialValue);
   const [getData, { data, refetch }] = useLazyQuery(GET_DATA, {
-    onCompleted: () =>
-      console.log(prevMonthList, currentMonthList, data?.getData),
+    onCompleted: () => console.log("Hello"),
     variables: { start: date.start, end: date.end },
   });
   var estimation = 0;
@@ -39,12 +38,12 @@ const Container = () => {
   }, []);
   var prevMonthList = data?.getData.filter((item) => {
     return (
-      new Date(item.date).getMonth() == Number(date?.end.split("/")[1]) - 2
+      new Date(item.date).getMonth() === Number(date?.end.split("/")[1]) - 2
     );
   });
   var currentMonthList = data?.getData.filter((item, index) => {
     return (
-      new Date(item.date).getMonth() == Number(date?.end.split("/")[1]) - 1
+      new Date(item.date).getMonth() === Number(date?.end.split("/")[1]) - 1
     );
   });
 
@@ -59,13 +58,16 @@ const Container = () => {
   });
 
   return (
-    <div className="w-full flex flex-col items-center">
+    <div
+      style={{ height: "850px" }}
+      className="w-full  flex flex-col items-center"
+    >
       <DateComponent
         start={date.start}
         end={date.end}
         handleChange={handleChange}
       />
-      <div className="flex w-full justify-around items-center px-4">
+      <div className="flex w-full flex-col lg:flex-row justify-around items-center">
         <Card
           heading={"Month to date " + params.type + " cases"}
           data={currentMonthData}
@@ -79,7 +81,7 @@ const Container = () => {
           data={estimation}
         />
       </div>
-      <BarGraph data={data?.getData} />
+      {data?.getData && <BarGraph data={data?.getData} />}
     </div>
   );
 };

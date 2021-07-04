@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const FormHandling = ({
   heading,
   handleChange,
@@ -8,11 +8,11 @@ const FormHandling = ({
   values,
 }) => {
   return (
-    <>
+    <div className="w-full flex flex-col justify-center items-center">
       <span className="text-3xl font-semibold my-4">{heading}</span>
       <form
         onSubmit={handleSubmit}
-        className="w-1/4 flex bg-gray-100 rounded-xl shadow-lg flex-col justify-center items-center p-4"
+        className="w-2/3 lg:w-1/4 flex bg-gray-100 rounded-xl shadow-lg flex-col justify-center items-center p-4"
       >
         {Data.map((item) => (
           <div className="flex flex-col p-3" key={item.value}>
@@ -36,8 +36,14 @@ const FormHandling = ({
         >
           {heading}
         </button>
+        <Link
+          to={heading == "Register" ? "/login" : "/"}
+          className="text-blue-500"
+        >
+          {heading == "Register" ? "Already Have An Account?" : "New User?"}
+        </Link>
       </form>
-    </>
+    </div>
   );
 };
 

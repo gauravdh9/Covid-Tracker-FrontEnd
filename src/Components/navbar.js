@@ -15,14 +15,14 @@ const Navbar = () => {
     history.push("/login");
   };
   return (
-    <div className="w-full justify-evenly items-center px-10 flex h-16 shadow-md">
+    <div className="w-full justify-around lg:justify-evenly items-center flex  shadow-md">
       <span className="text-lg font-medium">Dashboard</span>
-      <div className="flex w-2/12 items-center justify-center">
+      <div className=" flex w-2/3 lg:w-4/12 items-center justify-center">
         <span>Welcome</span>
         <span className="text-xl mx-2 font-bold capitalize">{user?.name}</span>
         <button
           onClick={handleLogout}
-          className="bg-red-500 rounded-md p-2 mx-8 text-white"
+          className="bg-red-500 rounded-md p-2 m-4 text-white"
         >
           Log Out
         </button>
