@@ -2,7 +2,6 @@ import React from "react";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -70,7 +69,6 @@ const BarGraph = ({ data }) => {
           dataKey={(data) => data.cases.Deceased}
           stackId="c"
           fill="#6b7280"
-          label={() => <div>hello</div>}
         />
       </BarChart>
     </ResponsiveContainer>

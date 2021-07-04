@@ -1,5 +1,5 @@
 import { useLazyQuery } from "@apollo/client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { GET_TOTAL_DATA } from "../Graphql/queries";
 import { Link } from "react-router-dom";
 const styling = {
